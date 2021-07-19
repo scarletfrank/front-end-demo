@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import $ from "jquery";
 import printMe from './print.js';
-
+import './css/index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function component() {
   const element = document.createElement('div');
@@ -15,7 +16,7 @@ function component() {
   return element;
 }
 
-document.body.appendChild(component());
+// document.body.appendChild(component());
 
 // 导入 jQuery
 

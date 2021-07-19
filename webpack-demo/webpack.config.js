@@ -1,8 +1,21 @@
 const path = require('path');
+// 热加载插件
 const webpack = require('webpack')
+// 生成HTML页面的插件
+// 1. 自动在内存中根据模板生成页面
+// 2. 自动把打包的js追加到页面中
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+        // 先调用css-loader，然后调用style-loader
+      },
+    ],
+  },
   mode: 'development',
   entry: {
     index: './src/index.js',
