@@ -14,6 +14,21 @@ module.exports = {
         use: ["style-loader", "css-loader"],
         // 先调用css-loader，然后调用style-loader
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|eot|svg|woff|woff2)$/i,
+        use: 'url-loader'
+      }
     ],
   },
   mode: 'development',

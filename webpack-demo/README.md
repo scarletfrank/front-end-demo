@@ -5,6 +5,8 @@
 - [x] 引入js
 - [x] 根据模板生成html
 - [x] 引入css (`css-loader` `style-loader`) 
+- [ ] 引入images `url-loader`处理，但不知道为啥压缩出的图片失效
+- [x] 引入其他文件(`svg` `woff`)，这里用`url-loader`又正常了...嗯，但是WSL2环境下失败了 
 
 ## QA
 

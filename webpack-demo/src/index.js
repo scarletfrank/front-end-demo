@@ -3,6 +3,7 @@ import $ from "jquery";
 import printMe from './print.js';
 import './css/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function component() {
   const element = document.createElement('div');
