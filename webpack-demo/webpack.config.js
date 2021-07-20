@@ -28,13 +28,22 @@ module.exports = {
       {
         test: /\.(ttf|eot|svg|woff|woff2)$/i,
         use: 'url-loader'
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ],
   },
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js'
   },
   output: {
     filename: '[name].bundle.js',
