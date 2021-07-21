@@ -44,6 +44,32 @@
 
 虽然没在这个项目里，不过我成功写了一个类似`Neovis.js`的项目，不过因为我想利用更多的`vis.js`特性，所以重新写了一下，不过也才是刚刚能调后台接口的程度，还没写到前端渲染。 
 
+**webpack中使用Vue开发**
+
+> 之前接触的时候用的`vue-cli`，所以这一部分粗糙记录一下
+
+- 区别`webpack`中导入`Vue`以及普通`script`导入`Vue`
+- 在`webpack.config.js`中添加`resolve`属性，来使用`Vue`模板对象(?)
+- 用这个`vue-loader`处理`.vue`，需要指定`Vue`实例中的`render`函数 
+
+```config
+resolve:{
+    alias:{
+        "vue$": "vue/dist/vue.js"
+    }
+}
+```
+
+**export default和export的使用方式**
+
+1. `Node`: `module.exports = {}` `require`
+2. `ES6`: `import`, `export default`(仅能暴露一个), `export`(可暴露多个)
+3. `export`只能用`{}`接收
+
+**webpack里使用vue-router**
+
+
+
 ## cheatsheet
 
 ```bash
