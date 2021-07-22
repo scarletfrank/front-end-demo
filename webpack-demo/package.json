@@ -14,11 +14,13 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
+    "@vue/compiler-sfc": "^3.1.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.1.0",
     "html-webpack-plugin": "^5.3.2",
     "style-loader": "^3.1.0",
     "url-loader": "^4.1.1",
+    "vue-loader": "^16.3.3",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
@@ -28,6 +30,8 @@
     "bootstrap-icons": "^1.5.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
-    "mdb-ui-kit": "^3.9.0"
+    "mdb-ui-kit": "^3.9.0",
+    "vue": "^3.1.5",
+    "vue-router": "^4.0.10"
   }
 }

@@ -47,6 +47,7 @@
 **webpack中使用Vue开发**
 
 > 之前接触的时候用的`vue-cli`，所以这一部分粗糙记录一下
+> 没想到这里的`alias`参数还挺重要的，被`runtime`坑了一下
 
 - 区别`webpack`中导入`Vue`以及普通`script`导入`Vue`
 - 在`webpack.config.js`中添加`resolve`属性，来使用`Vue`模板对象(?)
@@ -83,3 +84,5 @@ npm install -D babel-loader @babel/core @babel/preset-env webpack
 1. [getting-started](https://webpack.js.org/guides/getting-started/)
 2. [loader-style](https://webpack.js.org/loaders/style-loader/)
 3. [babel-loader](https://webpack.js.org/loaders/babel-loader/)
+4. [vue3+webpack 从0开始](https://zhuanlan.zhihu.com/p/349458590)
+5. [vue3+alias](https://blog.csdn.net/bowen11233/article/details/90268016)

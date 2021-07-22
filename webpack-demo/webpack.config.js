@@ -4,7 +4,8 @@ const webpack = require('webpack')
 // 生成HTML页面的插件
 // 1. 自动在内存中根据模板生成页面
 // 2. 自动把打包的js追加到页面中
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   module: {
@@ -38,6 +39,10 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       }
     ],
   },
@@ -63,6 +68,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html')
-    })
-  ]
+    }),
+    new VueLoaderPlugin()
+  ],
+  resolve:{
+    alias:{
+      "vue": "vue/dist/vue.esm-bundler.js"
+    }
+  }
 };
