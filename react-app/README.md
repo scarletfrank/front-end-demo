@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React简介
 
-## Available Scripts
+- 两个概念：
+  - library（库）
+  - Framework（框架）
 
-In the project directory, you can run:
+> 三大框架互相吸收
 
-### `npm start`
+- Angular.js
+- Vue.js
+- React.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## React与Vue对比
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 组件化方面
 
-### `npm test`
+1. 模块化：从代码角度分析；把一些可复用的代码，抽离成单个的模块；
+2. 组件化：从 **UI界面**角度分析；把一些可复用的UI元素，抽离成单个组件；
+3. **组件化有好处**
+4. **Vue组件化实现** ：单独的 `.vue`文件
+   - template 结构
+   - script 行为
+   - style 样式
+5. **React组件化实现** ：有组件化的概念，但没有单组件模板文件的概念，但都以JS表现（ES6 ES7）
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 移动App开发
 
-### `npm run build`
+- [ ] ReactNative 学习
+- [ ] ~~Weex停止孵化~~
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## React核心概念
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 虚拟DOM
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **DOM**：浏览器中的概念，用JS对象表示页面上的元素，并提供操作DOM对象的API
+- React中的虚拟DOM：框架中的概念，用JS对象来模拟页面上的DOM和DOM嵌套
+- 为什么要虚拟实现：为了实现页面中，DOM元素的动态更新
 
-### `npm run eject`
+**DOM树** 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Diff算法
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 参考资料
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React.js 阿里云课程](https://edu.aliyun.com/course/1727?spm=5176.10731542.0.0.3eca11d3X5dpf3)
