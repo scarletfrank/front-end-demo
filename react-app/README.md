@@ -40,6 +40,34 @@
 
 **DOM树** 
 
+> 按需更新：获取新旧DOM树，进行对比 =>
+>
+> 手动模拟DOM树
+
+*一个网页呈现的过程*：
+
+1. 浏览器请求服务器获取页面
+2. 在内存中解析DOM结构，并渲染一颗DOM树
+3. 浏览器把DOM树呈现到页面上
+
+```javascript
+var div = {
+    tagName: 'div',
+    attrs:{
+        'id': 'mydiv'
+    },
+    childrens: [
+        {
+            tagName: 'p',
+            attrs: {},
+            childrens: []
+        }
+    ]
+}
+```
+
+**虚拟DOM** 用JS对象的形式，模拟页面上DOM的嵌套关系
+
 ### Diff算法
 
 
