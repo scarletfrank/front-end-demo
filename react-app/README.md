@@ -91,9 +91,13 @@ var div = {
     当我们需要在JSX控制的区域内，写JS表达式的时候
 
 2. **字符串数组转换成jsx数组并渲染**
-3. **Vue和React中key的作用**
+
+3. **Vue和React中key的作用** 
+
+   `v-for` 或`map`里，主要是要保持状态的时候，就需要新增`key`属性
 
 
 ## 参考资料
 
 - [React.js 阿里云课程](https://edu.aliyun.com/course/1727?spm=5176.10731542.0.0.3eca11d3X5dpf3)
+

@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 let a = 10;
 let s = 'Hello, World'
 let boo = true
+
 const arr = [
     <h2>h2</h2>,
     <h3>h3</h3>
@@ -18,8 +19,9 @@ const arr = [
 
 const attStr = ['Sally', 'Hunter', 'Horizon']
 const nameArr = []
+// React中，需要把key添加给forEach/map/for循环控制的元素
 attStr.forEach(element => {
-    const temp = <h5>{element}</h5>
+    const temp = <h5 key={element}>{element}</h5>
     nameArr.push(temp)
 });
 const d1v =
@@ -30,10 +32,8 @@ const d1v =
         {a + 2}
         <hr />
         {boo ? 'True' : 'False'}
-        <hr />
-        {arr}
         <hr/>
-        {attStr.map(item => <h5>{item}</h5>
+        {attStr.map(item => <h5 key={item}>{item}</h5>
         )}
     </div>
 
