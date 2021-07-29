@@ -78,7 +78,20 @@ var div = {
 
 ### webpack-react
 
-`webpack`我们之前已经学习过了
+`webpack`我们之前已经学习过了，课程的主要内容是，新版`webpack`也开始采用 **约定大于配置**的习惯
+
+> 草，open参数还能控制devServer打开哪个浏览器的
+
+#### JSX
+
+>  新增`@babel/preset-react` 
+
+1. **什么情况下需要使用 {}**
+
+    当我们需要在JSX控制的区域内，写JS表达式的时候
+
+2. **字符串数组转换成jsx数组并渲染**
+3. **Vue和React中key的作用**
 
 
 ## 参考资料
