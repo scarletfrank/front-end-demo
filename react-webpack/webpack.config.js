@@ -42,6 +42,12 @@ module.exports = {
     ],
   },
   mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+    alias:{
+      '@': path.join(__dirname, './src')
+    }
+  },
   entry: {
     index: './src/index.js',
   },

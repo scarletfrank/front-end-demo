@@ -82,7 +82,7 @@ var div = {
 
 > 草，open参数还能控制devServer打开哪个浏览器的
 
-#### JSX
+### JSX
 
 >  新增`@babel/preset-react` 
 
@@ -95,6 +95,46 @@ var div = {
 3. **Vue和React中key的作用** 
 
    `v-for` 或`map`里，主要是要保持状态的时候，就需要新增`key`属性
+## React中创建组件
+
+### 第一种 构造函数创建组件
+
+```javascript
+// 组件的名称必须大写
+function Login(props){
+    return <h1>{props.name}</h1>
+}
+const d1v = 
+      <div>
+      		<Login name={defaultUser.name}></Login>
+      </div>
+ReactDOM.render(d1v, document.getElementById('app'));
+```
+补充
+- 展开运算符 ES6 `<Login {...defaultUser}></Login>`
+- 将组件抽离为单独的`.jsx`文件
+- 配置webpack以省略`.jsx`后缀  利用`resolve/extensions`
+
+### 第二种 `class`关键字创建组件
+
+#### ES6 class
+
+默认构造器`constructor`
+
+```javascript
+class Animal{
+    constructor(name, age){
+        this.name = name
+        this.age = age
+    }
+    static info = "动物"
+}
+const a1 = new Animal('大黄', 3)
+```
+
+使用static创建静态属性
+
+   
 
 
 ## 参考资料
