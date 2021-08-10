@@ -134,7 +134,46 @@ const a1 = new Animal('大黄', 3)
 
 使用static创建静态属性
 
-   
+####   class实例方法和静态方法
+
+```javascript
+function Person(name, age){
+    this.name = name
+    this.age = age
+}
+Person.prototype.say = function (){
+    console.log('Person 实例方法')
+}
+const p1 = new Person('scarlet', 21)
+p1.say()
+
+// 
+class Animal{
+    constructor(name, age){
+        this.name = name
+        this.age = age
+    }
+    static info = "动物"
+	roar(){
+        console.log('low roar from animals')
+    }
+	static show(){
+        console.log('static method show from animals')
+    }
+}
+```
+
+实例方法，挂载到原型对象 _proto_ 上 ，静态方法挂载给构造函数如下
+
+```javascript
+Person.show = function(){
+    console.log('Person的静态方法')
+}
+```
+
+
+
+
 
 
 ## 参考资料
