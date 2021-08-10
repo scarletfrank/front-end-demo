@@ -1,27 +1,23 @@
-# AngularApp
+# README
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+## 关键词
 
-## Development server
+1. 基础的组件写法
+2. `service`注入，绑定到`constructor`上
+3. 同步与异步的事件处理 `subscribe`, 用到了`RxJS Observable library`。此时被称为`ngOnInit`的生命周期钩子（`lifecycle hook`）来调用`HeroService`
+4. `MessageService`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 命令
 
-## Code scaffolding
+```bash
+ng new angular-tour-of-heroes
+ng serve
+ng generate component heroes
+ng generate component hero-detail
+ng generate service hero
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## 参考资料
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. [toh](https://angular.io/tutorial/toh-pt0)
