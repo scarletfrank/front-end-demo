@@ -12,6 +12,8 @@ npm install --save react-router-dom
 npm install @antv/graphin@latest --save
 npm install @antv/graphin-components@latest --save
 npm install @antv/graphin-icons --save
+npm i --save use-neo4j
+npm i --save neo4j-driver
 ```
 
 ## 资料
