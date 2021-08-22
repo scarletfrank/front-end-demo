@@ -20,3 +20,4 @@ npm i --save neo4j-driver
 
 1. [quick-router](https://www.freecodecamp.org/news/a-complete-beginners-guide-to-react-router-include-router-hooks/)
 2. [antd-router](https://www.cnblogs.com/LULULI/p/9670389.html)
+3. [antd-upload-manually](https://ant.design/components/upload-cn/#components-upload-demo-upload-manually)

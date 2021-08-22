@@ -9,6 +9,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import Core from './components/Core';
+import NeoImport from './components/NeoImport';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -39,7 +40,9 @@ class SiderDemo extends React.Component {
               <Menu.Item key="3">
               <Link to="/bill">Bill</Link>
               </Menu.Item>
-              <Menu.Item key="4">Alex</Menu.Item>
+              <Menu.Item key="4">
+              <Link to="/import"> Import </Link>
+              </Menu.Item>
             </SubMenu>
             <Menu.Item key="5" icon={<FileOutlined />}>
             <Link to="/core">Core</Link>
@@ -52,6 +55,7 @@ class SiderDemo extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/bill"  component={Bill} />
             <Route path="/core"  component={Core} />
+            <Route path="/import"  component={NeoImport} />
           </Content>
           <Footer style={{ textAlign: 'center' }}>scarlet ©2021 </Footer>
         </Layout>

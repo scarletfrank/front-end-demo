@@ -8,11 +8,9 @@ import { Neo4jProvider, createDriver } from 'use-neo4j';
 const driver = createDriver('neo4j', 'localhost', 7687, 'neo4j', 'password')
 
 ReactDOM.render(
-  <React.StrictMode>
     <Neo4jProvider driver={driver} >
       <SiderDemo />
-    </Neo4jProvider>
-  </React.StrictMode>,
+    </Neo4jProvider>,
   document.getElementById('root')
 );
 

@@ -171,6 +171,19 @@ Person.show = function(){
 }
 ```
 
+#### class 注意事项
+
+1. class {} 区间内，只能写构造器、静态方法和静态属性、实例方法
+2. class关键字内部，还是用基础函数实现。认为class是一种语法糖
+
+#### class中使用extends
+
+```javascript
+class Chinese extends Person {
+    
+}
+```
+
 
 
 
