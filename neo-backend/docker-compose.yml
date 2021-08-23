@@ -1,0 +1,13 @@
+version: '3.3'
+# 18.04 1.17 3.3
+# 20.04 19.03 3.8
+services: 
+  db:
+    image: postgres:13-alpine
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: 
+      - ./.env.dev.db
+
+volumes: 
+  postgres_data:
