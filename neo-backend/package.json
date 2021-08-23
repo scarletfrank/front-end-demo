@@ -1,5 +1,5 @@
 {
-  "name": "express-app-gen",
+  "name": "neo-backend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "neo4j-driver": "^4.3.3",
+    "papaparse": "^5.3.1"
   }
 }

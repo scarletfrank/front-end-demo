@@ -14,6 +14,9 @@ npm install @antv/graphin-components@latest --save
 npm install @antv/graphin-icons --save
 npm i --save use-neo4j
 npm i --save neo4j-driver
+# npm install papaparse --save 
+# 得由后端express 接口，来处理上传的文件
+# 通过一般关系型数据库去重，然后再导入到数据库里
 ```
 
 ## 资料
