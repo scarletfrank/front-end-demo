@@ -1,9 +1,8 @@
 import express from 'express';
+import {indexPage} from '../controllers'
 
 const indexRouter = express.Router();
 
-indexRouter.get('/', (req, res) =>
-  res.status(200).json({ message: 'Welcome to Express API template' })
-);
+indexRouter.get('/', indexPage);
 
 export default indexRouter;

@@ -45,6 +45,7 @@ export default class NeoG6 {
             node[k] = isInt(prop[k]) ? prop[k].toInt() : prop[k]
             // if prop[k] isNeo4jInteger, cast it to Integer
         }
+        node['style'] = {label: {value: 'node-label'}}
         // override
         this._nodes[neo4jNode.identity.toInt()] = node
       }

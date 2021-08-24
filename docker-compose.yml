@@ -1,0 +1,51 @@
+version: '3.3'
+# 18.04 1.17 3.3
+# 20.04 19.03 3.8
+services: 
+  web:
+    build: 
+      context: ./react-gdb-app
+    ports: 
+      - 5000:5000
+    depends_on: 
+      - pg
+      - neo4j
+
+  backend:
+    build: 
+      context: ./neo-backend
+    command: python cron.py
+    expose: 
+      - 9191
+    depends_on: 
+      - pg
+      - neo4j
+
+  pg:
+    image: postgres:13-alpine
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data/
+    env_file: 
+      - ./.env.pre.db
+
+  neo4j:
+    build: 
+      context: ./neo4j
+    restart: unless-stopped
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - conf_volume:/var/lib/neo4j/conf
+      - data_volume:/var/lib/neo4j/data
+      - import_volume:/var/lib/neo4j/import
+      - log_volume:/var/lib/neo4j/logs
+      - plugins_volume:/var/lib/neo4j/plugins
+
+volumes: 
+  postgres_data:
+  conf_volume:
+  data_volume:
+  import_volume:
+  log_volume:
+  plugins_volume:
