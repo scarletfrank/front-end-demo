@@ -27,6 +27,8 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file: 
       - ./.env.pre.db
+    ports:
+      - 5432:5432
 
   neo4j:
     build: 
