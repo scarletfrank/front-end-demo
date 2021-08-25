@@ -2,10 +2,9 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Upload, Button, message, Card } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-// import Papa from 'papaparse';
 import reqwest from 'reqwest';
 
-class NeoImport extends React.Component {
+class NodeUpload extends React.Component {
   state = {
     fileList: [],
     uploading: false,
@@ -21,23 +20,12 @@ class NeoImport extends React.Component {
       uploading: true,
     });
     fileList.forEach(file => {
-      formData.append('avatar', file);
-      // Parse local CSV file
-      // Papa.parse(file, {
-      //   complete: function(results) {
-      //     console.log("Finished:", results.data);
-      //     message.success('upload successfully.');
-      //     this.setState({
-      //       fileList: [],
-      //       uploading: false,
-      //     });
-      //   }.bind(this)
-      // });
+      formData.append('nodes', file);
     });
 
     // You can use any AJAX library you like
     reqwest({
-      url: 'http://localhost:3001/v1/photo',
+      url: 'http://localhost:3001/v1/nodes',
       method: 'post',
       processData: false,
       crossOrigin: true,
@@ -84,7 +72,7 @@ class NeoImport extends React.Component {
     };
 
     return (
-      <Card title="节点上传" style={{ width: 300, margin: 30}}>
+      <Card title="节点上传" style={{ width: 300, margin: 30 }}>
         <Upload {...props}>
           <Button icon={<UploadOutlined />}>选择文件</Button>
         </Upload>
@@ -102,4 +90,4 @@ class NeoImport extends React.Component {
   }
 }
 
-export default NeoImport;
+export default NodeUpload;

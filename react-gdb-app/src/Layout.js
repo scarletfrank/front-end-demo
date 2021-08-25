@@ -2,14 +2,15 @@ import React, {Fragment} from 'react';
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import 'antd/dist/antd.css';
 import './index.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu} from 'antd';
 import {
   PieChartOutlined,
   FileOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import Core from './components/Core';
-import NeoImport from './components/NeoImport';
+import Upload from './components/Upload';
+import GTable from './components/GTable';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -33,19 +34,18 @@ class SiderDemo extends React.Component {
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<PieChartOutlined />}>
-              <Link to="/">Home</Link>
+              <Link to="/">简介</Link>
             </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="2">Tom</Menu.Item>
-              <Menu.Item key="3">
-              <Link to="/bill">Bill</Link>
+            <SubMenu key="sub1" icon={<UserOutlined />} title="导入">
+              <Menu.Item key="2">
+              <Link to="/node">节点</Link>
               </Menu.Item>
-              <Menu.Item key="4">
-              <Link to="/import"> Import </Link>
+              <Menu.Item key="3">
+              <Link to="/import">上传</Link>
               </Menu.Item>
             </SubMenu>
-            <Menu.Item key="5" icon={<FileOutlined />}>
-            <Link to="/core">Core</Link>
+            <Menu.Item key="4" icon={<FileOutlined />}>
+            <Link to="/core">核心图</Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -53,9 +53,9 @@ class SiderDemo extends React.Component {
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Route path="/" exact component={Home} />
-            <Route path="/bill"  component={Bill} />
+            <Route path="/node"  component={GTable} />
             <Route path="/core"  component={Core} />
-            <Route path="/import"  component={NeoImport} />
+            <Route path="/import"  component={Upload} />
           </Content>
           <Footer style={{ textAlign: 'center' }}>scarlet ©2021 </Footer>
         </Layout>
@@ -73,21 +73,9 @@ const Home = () => (
     </Fragment>
     );
 
-const Bill = () => (
-    <Fragment>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>User</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            Bill is a cat.
-        </div>
-    </Fragment>
-);
-
 const FakeText = () => (
     <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    这是一个React图应用的演示，前端由React编写，后端接口用Express快速搭建。后端会连接一个图数据库和一个一般的关系型数据库。
     </p>
     )
 

@@ -13,4 +13,27 @@ VALUES ('chidimo', 'first message'),
       ('orji', 'second message')
 `;
 
+export const createNodesTable = `
+DROP TABLE IF EXISTS nodes;
+CREATE TABLE IF NOT EXISTS nodes (
+  acc VARCHAR PRIMARY KEY,
+  id VARCHAR DEFAULT '',
+  name VARCHAR DEFAULT '',
+  company VARCHAR DEFAULT '',
+  tag VARCHAR DEFAULT ''
+  )
+`
+
+export const createEdgesTable = `
+DROP TABLE IF EXISTS edges;
+CREATE TABLE IF NOT EXISTS edges (
+  acc_a VARCHAR NOT NULL,
+  tx_direction VARCHAR DEFAULT '',
+  acc_b VARCHAR NOT NULL,
+  amt VARCHAR DEFAULT '$1',
+  seq VARCHAR PRIMARY KEY
+  )
+`
+
+
 export const dropMessagesTable = 'DROP TABLE messages';
