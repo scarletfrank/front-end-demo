@@ -9,16 +9,16 @@ services:
       - 5000:5000
     depends_on: 
       - pg
-      - neo4j
+      # - neo4j
 
   backend:
     build: 
-      context: ./neo-backend
-    expose: 
-      - 3000
+      context: ./neo-backend 
+    ports:  
+      - 3001:3001
     depends_on: 
       - pg
-      - neo4j
+      # - neo4j
 
   pg:
     image: postgres:13-alpine

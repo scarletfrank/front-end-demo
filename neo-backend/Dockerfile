@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:lts-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -21,4 +21,4 @@ COPY . .
 
 RUN npm run prestart
 
-RUN npm run start
+ENTRYPOINT [ "node", "./build/bin/www"]
