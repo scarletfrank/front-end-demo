@@ -2,7 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Upload, Button, message, Card } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import Papa from 'papaparse'
+// import Papa from 'papaparse';
+import reqwest from 'reqwest';
 
 class NeoImport extends React.Component {
   state = {
@@ -15,25 +16,45 @@ class NeoImport extends React.Component {
   }
   handleUpload = () => {
     const { fileList } = this.state;
-    // const formData = new FormData();
+    const formData = new FormData();
     this.setState({
       uploading: true,
     });
     fileList.forEach(file => {
-      // formData.append('files[]', file);
-
+      formData.append('avatar', file);
       // Parse local CSV file
-      Papa.parse(file, {
-        complete: function(results) {
-          console.log("Finished:", results.data);
-          message.success('upload successfully.');
-          this.setState({
-            fileList: [],
-            uploading: false,
-          });
-        }.bind(this)
-      });
+      // Papa.parse(file, {
+      //   complete: function(results) {
+      //     console.log("Finished:", results.data);
+      //     message.success('upload successfully.');
+      //     this.setState({
+      //       fileList: [],
+      //       uploading: false,
+      //     });
+      //   }.bind(this)
+      // });
+    });
 
+    // You can use any AJAX library you like
+    reqwest({
+      url: 'http://localhost:3001/v1/photo',
+      method: 'post',
+      processData: false,
+      crossOrigin: true,
+      data: formData,
+      success: () => {
+        this.setState({
+          fileList: [],
+          uploading: false,
+        });
+        message.success('upload successfully.');
+      },
+      error: () => {
+        this.setState({
+          uploading: false,
+        });
+        message.error('upload failed.');
+      },
     });
 
     // You can use any AJAX library you like

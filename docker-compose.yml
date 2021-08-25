@@ -14,9 +14,8 @@ services:
   backend:
     build: 
       context: ./neo-backend
-    command: python cron.py
     expose: 
-      - 9191
+      - 3000
     depends_on: 
       - pg
       - neo4j

@@ -4,7 +4,10 @@ class Model {
   constructor(table) {
     this.pool = pool;
     this.table = table;
-    this.pool.on('error', (err, client) => `Error, ${err}, on idle client${client}`);
+    this.pool.on(
+      'error',
+      (err, client) => `Error, ${err}, on idle client${client}`
+    );
   }
   async insertWithReturn(columns, values) {
     const query = `

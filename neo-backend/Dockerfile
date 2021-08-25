@@ -13,6 +13,12 @@ COPY package*.json ./
 
 RUN npm config set registry https://registry.npm.taobao.org/
 
-RUN npm install --global http-server
+# RUN npm install --global http-server
 
 RUN npm install
+
+COPY . .
+
+RUN npm run prestart
+
+RUN npm run start

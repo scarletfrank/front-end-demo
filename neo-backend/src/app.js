@@ -8,9 +8,11 @@ import indexRouter from './routes/index';
 const app = express();
 
 // enable files upload
-app.use(fileUpload({
-    createParentPath: true
-}));
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
 //add other middleware
 app.use(cors());
