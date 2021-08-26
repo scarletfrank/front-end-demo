@@ -7,7 +7,7 @@
 
 1. 设计好`queries.js` `queryFunctions.js`，通过这些脚本来建立表格
 2. 建立相应的`controllers.js`，对上传文件，进行解析，它会调用`insert or skip`的逻辑来存储节点
-3. 当任务完成后，`pg-to-neo4j.js`完成从关系型数据库写入`Neo4j`库，此时，导入完成。
+3. 当任务完成后，`controllers.js`里的`syncEntity`函数，完成从关系型数据库写入`Neo4j`库，此时，导入完成。
 
 
 ## 资料

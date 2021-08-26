@@ -9,7 +9,7 @@ function edgesWrite(edges){
   const columns = 'acc_a, tx_direction, acc_b, amt, seq'
   let values = ``;
   console.log(edges.length)
-  for(const k in nodes){
+  for(const k in edges){
     const {acc_a, tx_direction, acc_b, amt, seq} = edges[k];
     let v = (k == edges.length - 1 ? 
       `('${acc_a}', '${tx_direction}', '${acc_b}', '${amt}', '${seq}')` :
