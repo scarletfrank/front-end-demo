@@ -6,8 +6,10 @@ import {
     photoPage, 
     addEdges,
     edgesPage,
+    syncEdge,
     nodesPage, 
-    addNodes 
+    addNodes,
+    syncNode 
 } from '../controllers';
 
 const indexRouter = express.Router();
@@ -20,4 +22,6 @@ indexRouter.post('/edges', addEdges);
 indexRouter.get('/edges', edgesPage);
 indexRouter.get('/nodes', nodesPage);
 indexRouter.post('/nodes', addNodes);
+indexRouter.get('/nodes/sync', syncNode);
+indexRouter.get('/edges/sync', syncEdge);
 export default indexRouter;

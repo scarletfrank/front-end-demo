@@ -22,6 +22,14 @@ class Model {
     if (clause) query += clause;
     return this.pool.query(query);
   }
+  async updateFlag(){
+    const query = `
+        UPDATE ${this.table}
+        SET import_flag = true
+        WHERE import_flag = false;
+    `
+    return this.pool.query(query);
+  }
 }
 
 export default Model;

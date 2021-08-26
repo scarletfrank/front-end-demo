@@ -1,16 +1,17 @@
 import EdgeModel from '../models/edgeModel';
 import Papa from 'papaparse';
 import fs from 'fs';
+import { driver } from './driver';
 
 const edgeModel = new EdgeModel('edges');
 // util function
-function nodesWrite(nodes){
+function edgesWrite(edges){
   const columns = 'acc_a, tx_direction, acc_b, amt, seq'
   let values = ``;
-  console.log(nodes.length)
+  console.log(edges.length)
   for(const k in nodes){
-    const {acc_a, tx_direction, acc_b, amt, seq} = nodes[k];
-    let v = (k == nodes.length - 1 ? 
+    const {acc_a, tx_direction, acc_b, amt, seq} = edges[k];
+    let v = (k == edges.length - 1 ? 
       `('${acc_a}', '${tx_direction}', '${acc_b}', '${amt}', '${seq}')` :
       `('${acc_a}', '${tx_direction}', '${acc_b}', '${amt}', '${seq}'),`);
     values += v;
@@ -20,6 +21,40 @@ function nodesWrite(nodes){
   } catch (err){
 
   }
+}
+
+export const syncEdge = async (req, res) => {
+  try {
+    const data = await edgeModel.select('acc_a, tx_direction, acc_b, amt, seq', ' where import_flag=false');
+    let query = "MATCH (e1:Person{acc: $acc_a}), (e2:Person{acc: $acc_b}) CREATE (e1)-[r:trans {amt: $amt, seq: $seq}]->(e2) RETURN r.seq as seq";
+    data.rows.forEach(function(e){
+      var session = driver.session()
+      var writeTxResultPromise = session.writeTransaction(async txc => {
+        // used transaction will be committed automatically, no need for explicit commit/rollback
+        var result = await txc.run(
+          query, e
+        )
+        // at this point it is possible to either return the result or process it and return the
+        // result of processing it is also possible to run more statements in the same transaction
+        return result.records.map(record => record.get('seq'))
+      })
+      // returned Promise can be later consumed like this:
+      writeTxResultPromise
+        .then(edgesArray => {
+          console.log(edgesArray)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        .then(() => session.close())
+    })
+    console.log('committed')
+    // If everything fines
+    const updata = await edgeModel.updateFlag();
+    res.status(200).json({status: "successful"})
+  } catch (error) {
+    res.status(200).json({ nodes: error.stack });
+  } 
 }
 
 export const edgesPage = async (req, res) =>{
@@ -52,7 +87,7 @@ export const addEdges = (req, res) =>{
             Papa.parse(data, {
               complete: function(results){
                 edgesAry = results.data;
-                nodesWrite(edgesAry);
+                edgesWrite(edgesAry);
                 // send successful response
                 res.send({
                   status: true,
