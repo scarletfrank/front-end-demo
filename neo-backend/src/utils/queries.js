@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS nodes (
   id VARCHAR DEFAULT '',
   name VARCHAR DEFAULT '',
   company VARCHAR DEFAULT '',
-  tag VARCHAR DEFAULT ''
+  import_flag boolean DEFAULT false,
+  create_date DATE DEFAULT now()
   )
 `
 
@@ -31,7 +32,9 @@ CREATE TABLE IF NOT EXISTS edges (
   tx_direction VARCHAR DEFAULT '',
   acc_b VARCHAR NOT NULL,
   amt VARCHAR DEFAULT '$1',
-  seq VARCHAR PRIMARY KEY
+  seq VARCHAR PRIMARY KEY,
+  import_flag boolean DEFAULT false,
+  create_date DATE DEFAULT now()
   )
 `
 
