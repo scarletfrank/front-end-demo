@@ -2,7 +2,7 @@ import { isNode, isRelationship, isInt} from 'neo4j-driver-core'
 
 export default class NeoG6 {
     _nodes = {};
-	_edges = {};
+	  _edges = {};
     _data = {};
 
     /**
@@ -41,11 +41,15 @@ export default class NeoG6 {
         let node = {id: neo4jNode.identity.toString(), labels: neo4jNode.labels[0]}
         // console.log(neo4jNode.properties)
         let prop = neo4jNode.properties
+        // avoid overiding the id of neo4jNode
+        // e.g. id in Person
         for (const k in prop){
+            if (k === "id"){
+              continue
+            }
             node[k] = isInt(prop[k]) ? prop[k].toInt() : prop[k]
             // if prop[k] isNeo4jInteger, cast it to Integer
         }
-        node['style'] = {label: {value: 'node-label'}}
         // override
         this._nodes[neo4jNode.identity.toInt()] = node
       }
