@@ -8,7 +8,7 @@ import {
   FileOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import Core from './components/Core';
+import Board from './components/Board';
 import Upload from './components/Upload';
 import GTable from './components/GTable';
 
@@ -54,7 +54,7 @@ class SiderDemo extends React.Component {
           <Content style={{ margin: '0 16px' }}>
             <Route path="/" exact component={Home} />
             <Route path="/node"  component={GTable} />
-            <Route path="/core"  component={Core} />
+            <Route path="/core"  component={Board} />
             <Route path="/import"  component={Upload} />
           </Content>
           <Footer style={{ textAlign: 'center' }}>scarlet ©2021 </Footer>

@@ -1,5 +1,13 @@
 # README
 
+## 各种React概念
+
+> 今天学习写查询图的时候，涉及到对Core，传入动态参数。
+> 根据use-neo4j的文档，花了一个小时调通了，不过基础概念我其实还是很蒙蔽
+> 总的来说就是用一个React.Component，包装function component
+
+~~总的来说，用吃饭前大概三个小时，解决了多边和查询的编写方式~~
+
 ## Cheatsheet
 
 ```bash
