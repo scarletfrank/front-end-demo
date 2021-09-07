@@ -11,8 +11,8 @@ edges = []
 # Node 
 
 
-for _ in range(10):
-    nodes.append([fake.bban(), fake.ssn(), fake.first_name(), fake.company()])
+for _ in range(20000):
+    nodes.append([fake.bban(), fake.ssn(), fake.first_name(), fake.ascii_company_email()])
 
 df_nodes = pd.DataFrame(nodes, columns=['acc', 'id', 'name', 'company'])
 # print(df_nodes)

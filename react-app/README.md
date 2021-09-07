@@ -115,7 +115,22 @@ ReactDOM.render(d1v, document.getElementById('app'));
 - 将组件抽离为单独的`.jsx`文件
 - 配置webpack以省略`.jsx`后缀  利用`resolve/extensions`
 
-### 第二种 `class`关键字创建组件
+### 第二种 基于class关键字创建组件
+
+```javascript
+// 要继承，这样创建的组件有状态，参考react-gdb-app中的Board组件
+class 组件 extends React.Component {
+    // 组件内部要有render函数
+    render(){
+        // 返回合法的JSX虚拟DOM
+        return <div>class组件</div>
+    }
+}
+```
+
+
+
+### 补充 `class`语法
 
 #### ES6 class
 
@@ -180,7 +195,15 @@ Person.show = function(){
 
 ```javascript
 class Chinese extends Person {
-    
+    constructor(name, age, IdNumber){
+        super(name, age)
+        this.IdNumber = IdNumber
+    }
+}
+class American extends Person {
+    constructor(name, age){
+        super(name, age)
+    }
 }
 ```
 

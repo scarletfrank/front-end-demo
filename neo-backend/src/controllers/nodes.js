@@ -1,17 +1,19 @@
 import NodeModel from '../models/nodeModel';
-import Papa from 'papaparse';
+// import Papa from 'papaparse';
+import csv from 'csv-parser';
 import fs from 'fs';
 import { driver } from './driver';
 
 const nodeModel = new NodeModel('nodes');
 // util function
 function nodesWrite(nodes){
+  console.log('nodesWrite: ' + nodes.length)
   const columns = 'acc, id, name, company'
-  let values = ``;
+  let values = ``
   for(const k in nodes){
     const {acc, id, name, company} = nodes[k];
-    let v = (k == nodes.length - 1 ? `('${acc}', '${id}', '${name}', '${company}')`: `('${acc}', '${id}', '${name}', '${company}'),`);
-    values += v;
+    let v = (k == nodes.length - 1 ? '' : ',');
+    values += `('${acc}', '${id}', '${name}', '${company}')` + v
   }
   try {
     const data = nodeModel.insertWithConflict(columns, values);
@@ -75,31 +77,26 @@ export const addNodes = (req, res) =>{
           //Use the mv() method to place the file in upload directory (i.e. "uploads")
           nodes.mv('./uploads/' + nodes.name);
           // parse csvString
-          fs.readFile('./uploads/' + nodes.name, 'utf8', function(err, data){
-            if (err) {
-                return console.error(err);
-            }
-            Papa.parse(data, {
-              complete: function(results){
-                nodesAry = results.data;
-                nodesWrite(nodesAry);
-                // send successful response
-                res.send({
-                  status: true,
-                  message: 'File is uploaded',
-                  data: {
-                    name: nodes.name,
-                    mimetype: nodes.mimetype,
-                    size: nodes.size,
-                  },
-                });
-              },
-              header: true
-            })
-            console.log("File opened!!");  
-          });
-          // Postgres Write
+          const results = [];
 
+          fs.createReadStream('./uploads/' + nodes.name, 'utf8')
+            .pipe(csv())
+            .on('data', (data) => results.push(data))
+            .on('end', () => {
+              nodesWrite(results)
+            });
+          
+          console.log("File opened!!"); 
+          res.send({
+            status: true,
+            message: 'File is uploaded and parsed',
+            data: {
+              name: nodes.name,
+              mimetype: nodes.mimetype,
+              size: nodes.size,
+              length: nodes.length,
+            }
+          });
         }
       } catch (err) {
         res.status(500).send(err);
