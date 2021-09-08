@@ -93,8 +93,7 @@ export const addNodes = (req, res) =>{
             data: {
               name: nodes.name,
               mimetype: nodes.mimetype,
-              size: nodes.size,
-              length: nodes.length,
+              size: nodes.size
             }
           });
         }

@@ -1,14 +1,14 @@
 import EdgeModel from '../models/edgeModel';
-import Papa from 'papaparse';
+import csv from 'csv-parser';
 import fs from 'fs';
 import { driver } from './driver';
 
 const edgeModel = new EdgeModel('edges');
 // util function
 function edgesWrite(edges){
+  console.log('edgesWrite: ' + edges.length)
   const columns = 'acc_a, tx_direction, acc_b, amt, seq'
   let values = ``;
-  console.log(edges.length)
   for(const k in edges){
     const {acc_a, tx_direction, acc_b, amt, seq} = edges[k];
     let v = (k == edges.length - 1 ? 
@@ -80,31 +80,25 @@ export const addEdges = (req, res) =>{
           //Use the mv() method to place the file in upload directory (i.e. "uploads")
           edges.mv('./uploads/' + edges.name);
           // parse csvString
-          fs.readFile('./uploads/' + edges.name, 'utf8', function(err, data){
-            if (err) {
-                return console.error(err);
-            }
-            Papa.parse(data, {
-              complete: function(results){
-                edgesAry = results.data;
-                edgesWrite(edgesAry);
-                // send successful response
-                res.send({
-                  status: true,
-                  message: 'File is uploaded',
-                  data: {
-                    name: edges.name,
-                    mimetype: edges.mimetype,
-                    size: edges.size,
-                  },
-                });
-              },
-              header: true
-            })
-            console.log("File opened!!");  
-          });
-          // Postgres Write
+          const results = [];
 
+          fs.createReadStream('./uploads/' + edges.name, 'utf8')
+            .pipe(csv())
+            .on('data', (data) => results.push(data))
+            .on('end', () => {              
+              edgesWrite(results)
+            });
+          // send successful response
+          res.send({
+            status: true,
+            message: 'File is uploaded',
+            data: {
+              name: edges.name,
+              mimetype: edges.mimetype,
+              size: edges.size,
+            },
+          });
+          console.log("File opened!!");
         }
       } catch (err) {
         res.status(500).send(err);
