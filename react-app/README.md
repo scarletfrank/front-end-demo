@@ -117,6 +117,8 @@ ReactDOM.render(d1v, document.getElementById('app'));
 
 ### 第二种 基于class关键字创建组件
 
+> 有状态的组件
+
 ```javascript
 // 要继承，这样创建的组件有状态，参考react-gdb-app中的Board组件
 class 组件 extends React.Component {
@@ -206,6 +208,8 @@ class American extends Person {
     }
 }
 ```
+
+### 评论列表实战
 
 
 
